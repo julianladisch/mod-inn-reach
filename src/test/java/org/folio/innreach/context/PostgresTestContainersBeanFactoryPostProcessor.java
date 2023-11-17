@@ -13,7 +13,7 @@ import org.testcontainers.junit.jupiter.Container;
 public class PostgresTestContainersBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
 
   @Container
-  public static PostgreSQLContainer<?> postgreDBContainer = new PostgreSQLContainer<>("postgres:11-alpine");
+  public static PostgreSQLContainer<?> postgreDBContainer = new PostgreSQLContainer<>(System.getenv().getOrDefault("TESTCONTAINERS_POSTGRES_IMAGE", "postgres:11-alpine"));
 
   @Override
   public void postProcessBeanFactory(ConfigurableListableBeanFactory configurableListableBeanFactory) throws BeansException {

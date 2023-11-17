@@ -72,7 +72,7 @@ public class BaseKafkaApiTest {
 
 
   @Container
-  public static PostgreSQLContainer<?> postgresqlContainer = new PostgreSQLContainer<>("postgres:11-alpine");
+  public static PostgreSQLContainer<?> postgresqlContainer = new PostgreSQLContainer<>(System.getenv().getOrDefault("TESTCONTAINERS_POSTGRES_IMAGE", "postgres:11-alpine"));
 
   @Autowired
   protected EmbeddedKafkaBroker embeddedKafkaBroker;

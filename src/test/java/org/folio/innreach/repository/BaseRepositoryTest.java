@@ -26,7 +26,7 @@ import org.folio.spring.FolioExecutionContext;
 abstract class BaseRepositoryTest {
 
   @Container
-  static final PostgreSQLContainer postgresqlContainer = new PostgreSQLContainer("postgres:11-alpine")
+  static final PostgreSQLContainer postgresqlContainer = new PostgreSQLContainer(System.getenv().getOrDefault("TESTCONTAINERS_POSTGRES_IMAGE", "postgres:11-alpine"))
       .withDatabaseName("db")
       .withUsername("postgres")
       .withPassword("postgres");
