@@ -167,7 +167,7 @@ class InitialContributionJobConsumerContainerTest extends BaseKafkaApiTest{
     var topicName = getTopicName();
     var context = prepareContext();
 
-    var consumerProperties = kafkaProperties.buildConsumerProperties();
+    var consumerProperties = kafkaProperties.buildConsumerProperties(null);
 
     ConsumerFactory<String, InstanceIterationEvent> factory = new DefaultKafkaConsumerFactory<>(consumerProperties,keyDeserializer(),valueDeserializer());
 
@@ -215,7 +215,7 @@ class InitialContributionJobConsumerContainerTest extends BaseKafkaApiTest{
   }
 
   public InitialContributionJobConsumerContainer prepareContributionJobConsumerContainer(String tempTopic) {
-    var consumerProperties = kafkaProperties.buildConsumerProperties();
+    var consumerProperties = kafkaProperties.buildConsumerProperties(null);
     consumerProperties.put(GROUP_ID_CONFIG, jobProperties.getReaderGroupId());
 
     return new InitialContributionJobConsumerContainer(consumerProperties, tempTopic, keyDeserializer(), valueDeserializer(), maxInterval, maxAttempt,
@@ -239,7 +239,7 @@ class InitialContributionJobConsumerContainerTest extends BaseKafkaApiTest{
   }
 
   public <V> ProducerFactory<String, V> producerFactory() {
-    Map<String, Object> props = new HashMap<>(kafkaProperties.buildProducerProperties());
+    Map<String, Object> props = new HashMap<>(kafkaProperties.buildProducerProperties(null));
     props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
     props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
     return new DefaultKafkaProducerFactory<>(props);

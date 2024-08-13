@@ -63,7 +63,7 @@ public class IterationEventReaderFactory {
 
   public KafkaItemReader<String, InstanceIterationEvent> createReader(String tenantId) {
     Properties props = new Properties();
-    props.putAll(kafkaProperties.buildConsumerProperties());
+    props.putAll(kafkaProperties.buildConsumerProperties(null));
     props.put(GROUP_ID_CONFIG, jobProperties.getReaderGroupId());
 
     var topic = getTopicName(tenantId);
@@ -93,7 +93,7 @@ public class IterationEventReaderFactory {
 
   public InitialContributionJobConsumerContainer createInitialContributionConsumerContainer(String tenantId, ContributionJobRunner contributionJobRunner) {
     log.info("Default offset: {}", DEFAULT_OFFSET);
-    var consumerProperties = kafkaProperties.buildConsumerProperties();
+    var consumerProperties = kafkaProperties.buildConsumerProperties(null);
     consumerProperties.put(GROUP_ID_CONFIG, jobProperties.getReaderGroupId());
     consumerProperties.put(AUTO_OFFSET_RESET_CONFIG, DEFAULT_OFFSET);
 

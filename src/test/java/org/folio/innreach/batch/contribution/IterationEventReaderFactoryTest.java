@@ -45,7 +45,7 @@ class IterationEventReaderFactoryTest {
 
     assertNotNull(reader);
 
-    verify(kafkaProperties).buildConsumerProperties();
+    verify(kafkaProperties).buildConsumerProperties(null);
     verify(folioEnv).getEnvironment();
     verify(jobProperties).getReaderTopic();
     verify(jobProperties).getReaderPollTimeoutSec();
@@ -56,7 +56,7 @@ class IterationEventReaderFactoryTest {
     var consumerContainer = factory.createInitialContributionConsumerContainer("test",contributionJobRunner);
     assertNotNull(consumerContainer);
 
-    verify(kafkaProperties).buildConsumerProperties();
+    verify(kafkaProperties).buildConsumerProperties(null);
     verify(folioEnv).getEnvironment();
     verify(jobProperties).getReaderTopic();
   }
