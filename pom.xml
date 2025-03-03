@@ -26,7 +26,6 @@
     <folio-spring.version>9.0.0</folio-spring.version>
     <spring-cloud-starter-openfeign.version>4.2.0</spring-cloud-starter-openfeign.version>
     <commons-collections4.version>4.4</commons-collections4.version>
-    <mapstruct.version>1.6.2</mapstruct.version>
     <marc4j.version>2.9.6</marc4j.version>
     <coffee-boots.version>4.0.0</coffee-boots.version>
 
@@ -153,17 +152,6 @@
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <optional>true</optional>
-    </dependency>
-    <dependency>
-      <groupId>org.mapstruct</groupId>
-      <artifactId>mapstruct</artifactId>
-      <version>${mapstruct.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.mapstruct</groupId>
-      <artifactId>mapstruct-processor</artifactId>
-      <version>${mapstruct.version}</version>
-      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.postgresql</groupId>
